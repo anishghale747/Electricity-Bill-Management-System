@@ -1,0 +1,20 @@
+CREATE DATABASE electricity_bill;
+
+CREATE TABLE `electricity_bill`.`user` ( `username` VARCHAR(100) NOT NULL ,
+ `password` VARCHAR(45) NOT NULL , `first_name` VARCHAR(45) NOT NULL ,
+ `last_name` VARCHAR(45) NOT NULL , `role` VARCHAR(45) NOT NULL , PRIMARY KEY (`username`)) ENGINE = InnoDB;
+
+
+CREATE TABLE `electricity_bill`.`bill` ( `id` BIGINT(20) NOT NULL AUTO_INCREMENT , 
+`username` VARCHAR(45) NOT NULL , `month` VARCHAR(45) NOT NULL , 
+`total_amount` VARCHAR(45) NOT NULL , `is_paid` VARCHAR(45) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+ALTER TABLE `bill` ADD FOREIGN KEY (`username`) REFERENCES 
+`user`(`username`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+SET FOREIGN_KEY_CHECKS=0;
+SET GLOBAL FOREIGN_KEY_CHECKS=0;
+
+
+INSERT INTO `user` (`username`, `password`, `first_name`, `last_name`, `role`) VALUES ('admin', 'admin', 'Anish ', 'Ghale', 'Admin')
